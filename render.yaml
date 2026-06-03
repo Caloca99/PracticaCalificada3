@@ -32,7 +32,6 @@ services:
     name: caloca-gym-frontend
     env: static
     rootDir: frontend
-    plan: free
     buildCommand: npm install && npm run build
     staticPublishPath: out
     envVars:
