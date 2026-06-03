@@ -147,6 +147,51 @@ curl -X DELETE http://localhost:4000/api/products/1
 
 ## Despliegue en Render
 
+El repositorio incluye `render.yaml`, por lo que puedes desplegarlo desde Render como Blueprint.
+
+### Aiven MySQL
+
+1. Crear un servicio MySQL en Aiven.
+2. Copiar estos datos de la pantalla de conexion:
+   - Host
+   - Port
+   - User
+   - Password
+   - Database
+3. En DBeaver, crear una conexion MySQL usando esos datos.
+4. Activar SSL si DBeaver lo solicita.
+5. Ejecutar `database/schema.sql`.
+6. Opcionalmente ejecutar `database/seed.sql` para cargar productos de ejemplo.
+
+Si el nombre de base de datos en Aiven es `defaultdb`, puedes usar ese valor en `DB_NAME` o crear una base llamada `ecommerce_db`.
+
+### Opcion recomendada: Render Blueprint
+
+1. Entrar a Render.
+2. Crear `New +` > `Blueprint`.
+3. Conectar el repositorio `Caloca99/PracticaCalificada3`.
+4. Render detectara `render.yaml` y creara:
+   - `caloca-gym-api`
+   - `caloca-gym-frontend`
+5. Completar las variables marcadas como secretas.
+
+Variables para `caloca-gym-api`:
+
+```env
+DB_HOST=host-de-aiven
+DB_PORT=puerto-de-aiven
+DB_USER=avnadmin
+DB_PASSWORD=password-de-aiven
+DB_NAME=ecommerce_db
+FRONTEND_URL=https://caloca-gym-frontend.onrender.com
+```
+
+Variables para `caloca-gym-frontend`:
+
+```env
+NEXT_PUBLIC_API_URL=https://caloca-gym-api.onrender.com/api
+```
+
 ### Backend
 
 1. Subir el codigo a GitHub.
