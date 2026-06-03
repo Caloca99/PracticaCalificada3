@@ -32,7 +32,7 @@ export async function getProduct(req, res, next) {
 
 export async function postProduct(req, res, next) {
   try {
-    const imageUrl = await getProductImage(req.body.name);
+    const imageUrl = req.body.image_url || (await getProductImage(req.body.name));
     const product = await createProduct({
       ...req.body,
       image_url: imageUrl

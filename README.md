@@ -121,7 +121,7 @@ curl http://localhost:4000/api/products
 curl http://localhost:4000/api/products/1
 ```
 
-### Crear producto con imagen automatica
+### Crear producto con imagen opcional
 
 ```bash
 curl -X POST http://localhost:4000/api/products \
@@ -129,14 +129,22 @@ curl -X POST http://localhost:4000/api/products \
   -d "{\"name\":\"Proteina Whey 2 lb\",\"description\":\"Proteina para recuperacion muscular despues del entrenamiento\",\"price\":139.90,\"stock\":20}"
 ```
 
-El backend consulta FakeStoreAPI y, si falla, genera una URL con Lorem Picsum. La URL se guarda en `image_url`.
+Tambien puedes enviar `image_url` manualmente:
+
+```bash
+curl -X POST http://localhost:4000/api/products \
+  -H "Content-Type: application/json" \
+  -d "{\"name\":\"Cinturon de levantamiento\",\"description\":\"Cinturon para rutinas pesadas de fuerza\",\"price\":99.90,\"stock\":8,\"image_url\":\"https://picsum.photos/seed/cinturon-gym/600/400\"}"
+```
+
+Si no envias `image_url`, el backend consulta FakeStoreAPI y, si falla, genera una URL con Lorem Picsum. La URL se guarda en `image_url`.
 
 ### Actualizar producto
 
 ```bash
 curl -X PUT http://localhost:4000/api/products/1 \
   -H "Content-Type: application/json" \
-  -d "{\"price\":64.90,\"stock\":15}"
+  -d "{\"price\":64.90,\"stock\":15,\"image_url\":\"https://picsum.photos/seed/nueva-imagen/600/400\"}"
 ```
 
 ### Eliminar producto

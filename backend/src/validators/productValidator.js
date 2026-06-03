@@ -4,7 +4,8 @@ export const createProductSchema = Joi.object({
   name: Joi.string().trim().min(2).max(120).required(),
   description: Joi.string().trim().min(5).required(),
   price: Joi.number().precision(2).positive().required(),
-  stock: Joi.number().integer().min(0).required()
+  stock: Joi.number().integer().min(0).required(),
+  image_url: Joi.string().trim().uri().allow("")
 });
 
 export const updateProductSchema = Joi.object({

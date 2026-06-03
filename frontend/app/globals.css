@@ -173,6 +173,27 @@ textarea {
   resize: vertical;
 }
 
+.image-helper {
+  align-items: center;
+  background: #10141b;
+  border: 1px dashed var(--line);
+  border-radius: 6px;
+  color: var(--muted);
+  display: flex;
+  justify-content: center;
+  min-height: 132px;
+  overflow: hidden;
+  padding: 10px;
+  text-align: center;
+}
+
+.image-helper img {
+  aspect-ratio: 4 / 3;
+  max-height: 180px;
+  object-fit: contain;
+  width: 100%;
+}
+
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

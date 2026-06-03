@@ -7,7 +7,8 @@ const emptyForm = {
   name: "",
   description: "",
   price: "",
-  stock: ""
+  stock: "",
+  image_url: ""
 };
 
 export default function Home() {
@@ -58,7 +59,8 @@ export default function Home() {
       name: product.name,
       description: product.description,
       price: product.price,
-      stock: product.stock
+      stock: product.stock,
+      image_url: product.image_url
     });
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
@@ -76,7 +78,8 @@ export default function Home() {
     const payload = {
       ...form,
       price: Number(form.price),
-      stock: Number(form.stock)
+      stock: Number(form.stock),
+      image_url: form.image_url.trim()
     };
 
     try {
@@ -205,6 +208,25 @@ export default function Home() {
                 required
               />
             </label>
+          </div>
+
+          <label>
+            Imagen URL
+            <input
+              name="image_url"
+              type="url"
+              placeholder="https://ejemplo.com/producto.jpg"
+              value={form.image_url}
+              onChange={handleChange}
+            />
+          </label>
+
+          <div className="image-helper">
+            {form.image_url ? (
+              <img src={form.image_url} alt="Vista previa del producto" />
+            ) : (
+              <span>Si dejas este campo vacio, la API asignara una imagen automaticamente.</span>
+            )}
           </div>
 
           <button className="primary" disabled={saving}>
