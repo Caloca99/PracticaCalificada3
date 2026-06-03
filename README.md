@@ -87,7 +87,7 @@ DB_HOST=tu-host-aiven
 DB_PORT=tu-puerto-aiven
 DB_USER=avnadmin
 DB_PASSWORD=tu-password
-DB_NAME=ecommerce_db
+DB_NAME=defaultdb
 DB_SSL=true
 DB_SSL_REJECT_UNAUTHORIZED=false
 FRONTEND_URL=https://tu-frontend.onrender.com
@@ -160,10 +160,9 @@ El repositorio incluye `render.yaml`, por lo que puedes desplegarlo desde Render
    - Database
 3. En DBeaver, crear una conexion MySQL usando esos datos.
 4. Activar SSL si DBeaver lo solicita.
-5. Ejecutar `database/schema.sql`.
-6. Opcionalmente ejecutar `database/seed.sql` para cargar productos de ejemplo.
+5. Ejecutar `database/aiven-init.sql` para crear la tabla y cargar productos de ejemplo.
 
-Si el nombre de base de datos en Aiven es `defaultdb`, puedes usar ese valor en `DB_NAME` o crear una base llamada `ecommerce_db`.
+El servicio Aiven de este proyecto usa `defaultdb`, por eso en Render debes configurar `DB_NAME=defaultdb`.
 
 ### Opcion recomendada: Render Blueprint
 
@@ -182,7 +181,7 @@ DB_HOST=host-de-aiven
 DB_PORT=puerto-de-aiven
 DB_USER=avnadmin
 DB_PASSWORD=password-de-aiven
-DB_NAME=ecommerce_db
+DB_NAME=defaultdb
 FRONTEND_URL=https://caloca-gym-frontend.onrender.com
 ```
 
@@ -201,7 +200,7 @@ NEXT_PUBLIC_API_URL=https://caloca-gym-api.onrender.com/api
    - Build Command: `npm install`
    - Start Command: `npm start`
 4. Agregar las variables de entorno del backend con los datos de Aiven.
-5. Crear la tabla `products` en Aiven usando `database/schema.sql` desde DBeaver.
+5. Crear la tabla `products` en Aiven usando `database/aiven-init.sql` desde DBeaver.
 
 ### Frontend
 
