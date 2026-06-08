@@ -10,6 +10,7 @@ export const sessionMiddleware = session({
   secret: process.env.SESSION_SECRET || "caloca-gym-dev-secret",
   resave: false,
   saveUninitialized: false,
+  proxy: true,
   store: new MySQLStore({
     host: process.env.DB_HOST || "localhost",
     port: Number(process.env.DB_PORT || 3306),
