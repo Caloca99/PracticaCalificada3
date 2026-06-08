@@ -1,4 +1,8 @@
 import "./globals.css";
+import { AuthProvider } from "./components/AuthProvider.jsx";
+import { CartProvider } from "./components/CartProvider.jsx";
+import Navbar from "./components/Navbar.jsx";
+import { ToastProvider } from "./components/Toast.jsx";
 
 export const metadata = {
   title: "CALOCA GYM",
@@ -8,7 +12,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <body>{children}</body>
+      <body>
+        <ToastProvider>
+          <AuthProvider>
+            <CartProvider>
+              <Navbar />
+              {children}
+            </CartProvider>
+          </AuthProvider>
+        </ToastProvider>
+      </body>
     </html>
   );
 }
